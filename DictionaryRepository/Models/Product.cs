@@ -42,7 +42,7 @@ namespace DictionaryRepository.Models
             {
                 return false;
             }
-            // old syntax
+            // old syntax if we dont use var product = obj as Product
             //return (this.Name == ((Product)obj).Name)
             //    && (this.Price == ((Product)obj).Price);
 
