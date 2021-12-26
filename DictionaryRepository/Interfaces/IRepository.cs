@@ -10,12 +10,9 @@ namespace DictionaryRepository.Interfaces
     public interface IRepository
     {
         Dictionary<int, Product> SelectAll();
-        Product Select(int id);
-
         void Insert(Product product);
-
         void Update(Product product);
-        void Delete(int id);
-
+        void  Delete(int id);
+        Product SelectSingle(int id);
     }
 }

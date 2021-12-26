@@ -7,29 +7,51 @@ using System.Threading.Tasks;
 
 namespace DictionaryRepository.Models
 {
-    public static class ProductManager//: IRepository
+    public class ProductManager : IRepository
     {
-        public static void Delete(int id)
+
+        public void Delete(int id)
         {
             Data.ProductList.Remove(id);
         }
 
-        public static void Insert(Product product)
+        public Product SelectSingle(int id)
         {
-            Data.ProductList.Add(product.Id,product);
+            Product product = Data.ProductList[id];
+            return product;
         }
 
-        public static Dictionary<int, Product> SelectAll()
+        public void Insert(Product product)
+        {
+            Data.ProductList.Add(product.Id, product);
+        }
+
+        public Dictionary<int, Product> SelectAll()
         {
             return Data.ProductList;
         }
 
-        public static void Update(Product product)
+        public void Update(Product product)
         {
             Product updateProduct = Data.ProductList[product.Id];
             updateProduct.Name = product.Name;
             updateProduct.Price = product.Price;
             updateProduct.Category = product.Category;
         }
+
+        public Product GetWithTryParse(int find)
+        {
+            Product product = null;
+            if (Data.ProductList.TryGetValue(find, out Product value))
+            {
+                product = value;
+            }
+            else
+            {
+                throw new Exception("Not found");
+            }
+            return product;
+        }
+
     }
 }
