@@ -42,6 +42,7 @@ namespace DictionaryRepository
                 Console.WriteLine(e.Message);
             }
             
+            //***********************************************************************
            // create two object of Product to test Equals and hashcode 
 
             Product p1 = new Product();
