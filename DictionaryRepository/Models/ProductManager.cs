@@ -48,7 +48,7 @@ namespace DictionaryRepository.Models
             }
             else
             {
-                throw new Exception("Not found");
+                throw new IndexOutOfRangeException("Not found");
             }
             return product;
         }

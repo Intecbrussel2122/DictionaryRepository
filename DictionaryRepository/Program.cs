@@ -33,7 +33,7 @@ namespace DictionaryRepository
 
             try
             {
-                result = dictList.GetWithTryParse(11);
+                result = dictList.GetWithTryParse(2);
                 Console.WriteLine(result);
             }
             catch (Exception e)
@@ -42,7 +42,39 @@ namespace DictionaryRepository
                 Console.WriteLine(e.Message);
             }
             
+           // create two object of Product to test Equals and hashcode 
+
+            Product p1 = new Product();
+            p1.Id = 10;
+            p1.Name = "Table";
+            p1.Price = 25.00m;
+            p1.Category = "Timber";
+            
+            Product p2 = new Product();
+            p1.Id = 10;
+            p2.Name = "Table";
+            p2.Price = 25.00m;
+            p1.Category = "Timber";
+           
+
+            //Console.WriteLine(C1 == C2); // this will allways give false because reference is different 
+            // in other hand the code below will add new product if equals is not true otherwise gives a message Product already exist in the Collection
+            var equal = p1.Equals(p2);
+
+            if (equal)
+            {
+                Console.WriteLine("Product Already exists in the collection");
+            }
+            else
+            {
+                Product p = new Product();
+                dictList.Insert(p1);
+                Show(list);
+            }
+            Console.WriteLine(p1.Equals(p2));
+
             Console.ReadLine();
+
         }
 
         private static void Show(Dictionary<int, Product> dictList)
