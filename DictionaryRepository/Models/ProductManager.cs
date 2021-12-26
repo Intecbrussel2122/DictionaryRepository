@@ -52,7 +52,6 @@ namespace DictionaryRepository.Models
             }
             return product;
         }
-
         public bool Find(int find)
         {
             if (Data.ProductList.TryGetValue(find, out Product value))

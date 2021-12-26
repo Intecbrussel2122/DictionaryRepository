@@ -17,17 +17,13 @@ namespace DictionaryRepository.Models
         {
             return $"{Name} {Price} {Category}";
         }
-
-
         public string GetNameAndPrice
         {
             get 
             { 
                 return Name + Price.ToString(); 
             }
-            
         }
-
         public override bool Equals(object obj) // if this method and GetHachcode is commented the program will never find the product
         {
             
@@ -49,7 +45,7 @@ namespace DictionaryRepository.Models
             // otherwise compare and return 
             //return (this.Name == (product).Name)
             //    && (this.Price == (product).Price);
-            return GetNameAndPrice == product.GetNameAndPrice; // this property is beter than the line above
+            return GetNameAndPrice == product.GetNameAndPrice; // this property is beter than the lines above
         }
         // always implement 
         public override int GetHashCode()
