@@ -64,5 +64,19 @@ namespace DictionaryRepository.Models
             }
         }
 
+        public Dictionary<int, Product> GetAllByCategory(string category)
+        {
+            var result = SelectAll();
+            var list = new Dictionary<int, Product>();
+            foreach (var item in result)
+            {
+                if (item.Value.Category == category)
+                {
+                    list.Add(item.Key, item.Value);
+                }
+            }
+            return list;
+        }
+
     }
 }

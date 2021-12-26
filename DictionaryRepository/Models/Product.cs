@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DictionaryRepository.Models
 {
-    public class Product
+    public class Product:IComparable<Product>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -52,6 +52,14 @@ namespace DictionaryRepository.Models
         {
             //return Name.GetHashCode() ^ Price.GetHashCode(); //Bitwise XOR operator return 0 if the operands are equal and 1 if the aoperands are different
             return GetNameAndPrice.GetHashCode();// this is another way to test through property GetNameAndPrice
+        }
+
+
+
+        public int CompareTo(Product other)
+        {
+            // Alphabetic sort 
+            return this.Name.CompareTo(other.Name);
         }
     }
 }

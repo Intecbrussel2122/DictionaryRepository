@@ -13,19 +13,43 @@ namespace DictionaryRepository
         {
             var dictList = new ProductManager();
             var list  = dictList.SelectAll();
+            Show(list, "Show All Records in Original order");
+           
 
-            Show(list);
-            
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("Show All Records Sorted by Name");
+            Console.WriteLine("---------------------------------");
+
+            var myList = list.ToList();
+            myList.Sort((pair1, pair2) => pair1.Value.CompareTo(pair2.Value));
+
+            foreach (var value in myList)
+            {
+                Console.WriteLine(value);
+            }
+
+
+            Console.WriteLine();
+            Console.WriteLine();
+
             dictList.Delete(3);
-            Show(list);
+            Show(list,"After Deletion ");
+            Console.WriteLine();
+            Console.WriteLine();
 
-            Product product = new Product() { Id = 6, Name = "Battery", Category = "Electronics", Price = 18.50m };
+            Product product = new Product() { Id = 16, Name = "Battery", Category = "Electronics", Price = 18.50m };
             dictList.Insert(product);
-            Show(list);
+            Show(list, "New Product Added");
+            Console.WriteLine();
+            Console.WriteLine();
+
 
             Product productToUpdate = new Product() { Id = 2, Category = "Furniture", Name = "Desk", Price = 155.70m };
             dictList.Update(productToUpdate);
-            Show(list);
+            Show(list, "Product Updated");
+            Console.WriteLine();
+            Console.WriteLine();
+
 
             var result = dictList.SelectSingle(2);
             Console.WriteLine("This is from getsingle");
@@ -71,9 +95,11 @@ namespace DictionaryRepository
             {
                 Product p = new Product();
                 dictList.Insert(p2);
-                Show(list);
+                Show(list, "Added with Equals method");
+                Console.WriteLine();
+                Console.WriteLine();
             }
-            Console.WriteLine(p1.Equals(p2));
+            //Console.WriteLine(p1.Equals(p2));
 
             if (dictList.Find(2))
             {
@@ -84,17 +110,27 @@ namespace DictionaryRepository
                 Console.WriteLine("Record is NOT Found in the collection");
             }
 
+
+            var category = dictList.GetAllByCategory("Printer"); 
+            Show(category, "Products by one Category");
+            Console.WriteLine();
+            Console.WriteLine();
+
             Console.ReadLine();
 
         }
 
-        private static void Show(Dictionary<int, Product> dictList)
+        private static void Show(Dictionary<int, Product> dictList, string parameter)
         {
+            Console.WriteLine("---------------------------------------");
+            Console.WriteLine(parameter);
             Console.WriteLine("---------------------------------------");
             foreach (var item in dictList)
             {
                 Console.WriteLine(item);
             }
         }
-    }
+
+        
+}
 }
