@@ -45,17 +45,18 @@ namespace DictionaryRepository
             //***********************************************************************
            // create two object of Product to test Equals and hashcode 
 
-            Product p1 = new Product();
+            Product p1 = new Product(); // this product already exists in the collection and we get msg product exist in the collection
+            // but if we change p2.Price to 401.00 it will be added to the collection
             p1.Id = 10;
-            p1.Name = "Table";
-            p1.Price = 25.00m;
-            p1.Category = "Timber";
+            p1.Name = "Telephone";
+            p1.Price = 400.00m;
+            p1.Category = "GSM";
             
             Product p2 = new Product();
-            p1.Id = 10;
-            p2.Name = "Table";
-            p2.Price = 25.00m;
-            p1.Category = "Timber";
+            p2.Id = 10;
+            p2.Name = "Telephone";
+            p2.Price = 400.00m;
+            p2.Category = "Samsung";
            
 
             //Console.WriteLine(C1 == C2); // this will allways give false because reference is different 
@@ -69,7 +70,7 @@ namespace DictionaryRepository
             else
             {
                 Product p = new Product();
-                dictList.Insert(p1);
+                dictList.Insert(p2);
                 Show(list);
             }
             Console.WriteLine(p1.Equals(p2));
