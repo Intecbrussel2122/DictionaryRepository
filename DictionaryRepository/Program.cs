@@ -75,6 +75,15 @@ namespace DictionaryRepository
             }
             Console.WriteLine(p1.Equals(p2));
 
+            if (dictList.Find(2))
+            {
+                Console.WriteLine("Record Found in the collection");
+            }
+            else
+            {
+                Console.WriteLine("Record is NOT Found in the collection");
+            }
+
             Console.ReadLine();
 
         }

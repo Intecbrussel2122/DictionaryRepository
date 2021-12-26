@@ -14,5 +14,6 @@ namespace DictionaryRepository.Interfaces
         void Update(Product product);
         void  Delete(int id);
         Product SelectSingle(int id);
+        bool Find(int find);
     }
 }
