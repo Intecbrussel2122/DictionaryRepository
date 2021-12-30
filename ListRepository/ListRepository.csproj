@@ -44,10 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Data.cs" />
+    <Compile Include="Models\CommonBase.cs" />
     <Compile Include="Models\ComputerManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\ProductBase.cs" />
+    <Compile Include="Models\ProductBaseDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

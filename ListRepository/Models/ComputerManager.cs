@@ -28,12 +28,10 @@ namespace ListRepository.Models
             {
                 return true;
             }
-            
             else
             {
                 return false;
             }
-            
         }
 
         public void Insert(ProductBase product)
@@ -62,10 +60,57 @@ namespace ListRepository.Models
             {
                 if (item.Category == category)
                 {
-                    list.Add(new Computer(item.Id, item.Name, item.Price,item.Category));
+                    list.Add(new Computer(item.Id, item.Name, item.Price, item.Category));
                 }
             }
             return list;
+        }
+
+        public List<string> GetPartOfProductAsString(int subLength)
+        {
+            var result = SelectAll();
+            var list = new List<string>();
+            string name = string.Empty, category = string.Empty;
+
+            for (int i = 0; i < result.Count; i++)
+            {
+
+                if (result[i].Name.Length > 2)
+                {
+                    name = result[i].Name.Substring(0, subLength).ToUpper();
+                }
+                else
+                {
+                    name = result[i].Name.Substring(0, result[i].Name.Length).ToUpper();
+                    if (name.Length == 1)
+                    {
+                        name += "  ";
+                    }
+                    if (name.Length == 2)
+                    {
+                        name += " ";
+                    }
+
+                }
+
+                if (result[i].Category.Length > 3)
+                {
+                    category = result[i].Category.Substring(0, subLength + 1).ToUpper();
+                }
+                else
+                {
+                    category = result[i].Category.Substring(0, result[i].Category.Length).ToUpper();
+                }
+
+                list.Add(result[i].Id.ToString() + name + category + "\t\t" + result[i].Price.ToString());
+            }
+            return list;
+        }
+
+        public List<ProductBase> GetPartOfProductDTO()
+        {
+            var resultAll = SelectAll();
+            return resultAll;
         }
     }
 }

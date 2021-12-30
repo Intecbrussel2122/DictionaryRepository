@@ -18,11 +18,15 @@ namespace ListRepository
             Console.WriteLine();
             Console.WriteLine();
 
+
             ProductBase p0 = new ProductBase(12, "IBM", 900.00m, "Laptop");
             cm.Insert(p0);
+
             Show(resultAll, "Show after add");
             Console.WriteLine();
             Console.WriteLine();
+
+
             //Find
             var found = cm.Find(3);
             Console.WriteLine("Find an product");
@@ -35,6 +39,7 @@ namespace ListRepository
                 Console.WriteLine("Not found");
             }
             Console.WriteLine();
+
 
             //GetByCategory
             var category = cm.GetAllByCategory("Laptop");
@@ -68,7 +73,7 @@ namespace ListRepository
 
             Console.WriteLine("Test with == ");
             Console.WriteLine(p1 == p2); // this will allways give false because reference is different 
-            Console.WriteLine("Not SAme");  
+            Console.WriteLine("Not Same");  
 
             Console.WriteLine();
             Console.WriteLine();
@@ -88,12 +93,36 @@ namespace ListRepository
                 Console.WriteLine();
                 Console.WriteLine();
             }
+
             Console.WriteLine(p1.Equals(p2));
             Console.WriteLine("Same");
 
-            Console.ReadLine();
-        }
+            Console.WriteLine();
+            Console.WriteLine();
+            var parts = cm.GetPartOfProductAsString(3);
 
+            Console.WriteLine("From string collection");
+            foreach (var item in parts)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine();
+           
+            var partsDTO = cm.GetPartOfProductDTO();
+            Console.WriteLine("From DTO collection");
+
+            foreach (var item in partsDTO)
+            {
+                Console.WriteLine(item.Id + item.Name.Substring(0,2).ToUpper() + item.Category.Substring(0,3).ToUpper() + "\t\t" + item.Price);
+            }
+            Console.WriteLine(partsDTO.Max(a => a.Price)); 
+            Console.WriteLine(partsDTO.Sum(a => a.Price)); 
+            Console.ReadLine();
+        } 
+
+     
         private static void Show(List<ProductBase> resultAll, string argument)
         {
             Console.WriteLine(argument);

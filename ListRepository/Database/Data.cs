@@ -17,7 +17,7 @@ namespace ListRepository.Database
             Computer p2 = new Computer(2, "ThinkPad", 850.00m, "Laptop");
             Computer p3 = new Computer(3, "HP", 500.00m, "Desktop");
             Computer p4 = new Computer(4, "Daewoo", 450.00m, "Desktop");
-            Computer p5 = new Computer(4, "Lenovo", 950.00m, "Laptop");
+            Computer p5 = new Computer(5, "Lenovo", 950.00m, "Laptop");
 
 
             ProductList.Add(p1);

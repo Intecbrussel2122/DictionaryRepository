@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ListRepository.Models
 {
-    public class ProductBase
+    public class ProductBase:CommonBase
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Category { get; set; }
@@ -22,7 +21,7 @@ namespace ListRepository.Models
         }
         public override string ToString()
         {
-            return $"{Name} {Price} {Category}";
+            return $"{Id} {Name} {Price} {Category}";
         }
         public string GetIdAndName
         {
@@ -60,8 +59,6 @@ namespace ListRepository.Models
             //return Id.GetHashCode() ^ Name.GetHashCode(); //Bitwise XOR operator return 0 if the operands are equal and 1 if the aoperands are different
             return GetIdAndName.GetHashCode();// this is another way to test through property GetIdAndName
         }
-
-
 
         public int CompareTo(ProductBase other)
         {
