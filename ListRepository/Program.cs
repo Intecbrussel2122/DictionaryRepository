@@ -63,6 +63,7 @@ namespace ListRepository
 
             Console.WriteLine("Test with == ");
             Console.WriteLine(p1 == p2); // this will allways give false because reference is different 
+            Console.WriteLine("Not SAme");  
 
             Console.WriteLine();
             Console.WriteLine();
@@ -83,6 +84,7 @@ namespace ListRepository
                 Console.WriteLine();
             }
             Console.WriteLine(p1.Equals(p2));
+            Console.WriteLine("Same");
 
             Console.ReadLine();
         }
