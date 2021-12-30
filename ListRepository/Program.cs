@@ -18,6 +18,11 @@ namespace ListRepository
             Console.WriteLine();
             Console.WriteLine();
 
+            ProductBase p0 = new ProductBase(12, "IBM", 900.00m, "Laptop");
+            cm.Insert(p0);
+            Show(resultAll, "Show after add");
+            Console.WriteLine();
+            Console.WriteLine();
             //Find
             var found = cm.Find(3);
             Console.WriteLine("Find an product");
