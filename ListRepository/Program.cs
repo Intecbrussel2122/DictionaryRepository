@@ -39,10 +39,11 @@ namespace ListRepository
                 Console.WriteLine("Not found");
             }
             Console.WriteLine();
+            Console.WriteLine();
 
 
             //GetByCategory
-            var category = cm.GetAllByCategory("Laptop");
+            var category = cm.GetAllByCategory("Desktop");
             Show(category, "Show by category");
             Console.WriteLine();
             Console.WriteLine();
@@ -119,22 +120,49 @@ namespace ListRepository
 
             foreach (var item in partsDTO)
             {
-                Console.WriteLine(item.IdNameCategory + "\t\t " + item.Price);
+                Console.WriteLine(item);
             }
             //Console.WriteLine(partsDTO.Max(a => a.Price)); // here I DO HAVE access to price to make any calculation
             //Console.WriteLine(partsDTO.Sum(a => a.Price)); 
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            // sort by name
+            var sort = cm.SelectAll();
+            sort.Sort();
+            Show(sort, "Sort by Name");
+
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+            // sort by price
+            if (sort == null) // check for lazy loading
+            {
+                sort = cm.SelectAll();
+            }
+            else
+            {
+                sort.Sort(new SortByPrice()); 
+            }
+            
+            
+            Show(sort, "Sort by price");
+
             Console.ReadLine();
+
         } 
 
      
         private static void Show(List<ProductBase> resultAll, string argument)
         {
             Console.WriteLine(argument);
-            Console.WriteLine("-----------------");
+            Console.WriteLine(new string('-',50));
             foreach (var item in resultAll)
             {
                 Console.WriteLine(item);
             }
         }
-    }
+    } 
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ListRepository.Models
 {
-    public class ProductBase:CommonBase
+    public class ProductBase:CommonBase, IComparable<ProductBase>
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
@@ -21,7 +21,7 @@ namespace ListRepository.Models
         }
         public override string ToString()
         {
-            return $"{Id} {Name} {Price} {Category}";
+            return $"{Id,-10} {Name, -15} {Category, -15} {Price, -20}";
         }
         public string GetIdAndName
         {

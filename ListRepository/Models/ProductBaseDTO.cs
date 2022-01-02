@@ -10,5 +10,10 @@ namespace ListRepository.Models
     {
         public string IdNameCategory { get; set; }
         public decimal Price { get;  set; }
+
+        public override string ToString()
+        {
+            return $"{IdNameCategory} \t\t{Price}";
+        }
     }
 }

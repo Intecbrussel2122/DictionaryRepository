@@ -50,6 +50,7 @@
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\ProductBase.cs" />
     <Compile Include="Models\ProductBaseDTO.cs" />
+    <Compile Include="Models\SortByPrice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

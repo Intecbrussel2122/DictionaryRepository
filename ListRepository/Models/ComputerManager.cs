@@ -47,16 +47,23 @@ namespace ListRepository.Models
         }
         public List<ProductBase> GetAllByCategory(string category)
         {
+            // using simple foreach
+
+            //var result = SelectAll();
+            //var list = new List<ProductBase>();
+            //foreach (var item in result)
+            //{
+            //    if (item.Category == category)
+            //    {
+            //        list.Add(new Computer(item.Id, item.Name, item.Price, item.Category));
+            //    }
+            //}
+            //return list;
+
+
+            //using lambda expression
             var result = SelectAll();
-            var list = new List<ProductBase>();
-            foreach (var item in result)
-            {
-                if (item.Category == category)
-                {
-                    list.Add(new Computer(item.Id, item.Name, item.Price, item.Category));
-                }
-            }
-            return list;
+            return result.FindAll(p =>p.Category == category);
         }
 
         public List<string> GetPartOfProductAsString(int subLength)
