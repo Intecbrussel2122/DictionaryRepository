@@ -1,11 +1,6 @@
 ﻿using ListRepository.Database;
 using ListRepository.Interfaces;
-using ListRepository.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ListRepository.Models
 {
@@ -43,8 +38,6 @@ namespace ListRepository.Models
         {
             return Data.ProductList;
         }
-
-
         public void Update(ProductBase product)
         {
             ProductBase updateProduct = Data.ProductList[product.Id];
@@ -115,28 +108,25 @@ namespace ListRepository.Models
 
             for (int i = 0; i < resultAll.Count; i++)
             {
+                // use ternary operator
                 // int x = 10;
                 // int y = 5;
-
                 //var result = x > y ? "x is greater than y" : "x is less than y";
-                
-                var id = resultAll[i].Id.ToString();
 
                 // use ternary operator
-                string name = resultAll[i].Name.Length > 2 ? resultAll[i].Name.Substring(0, 3).ToUpper() : resultAll[i].Name.Substring(0, 2).ToUpper()+" ";
+                var id = resultAll[i].Id.ToString();
+                string name = resultAll[i].Name.Length > 2 ? resultAll[i].Name.Substring(0, 3).ToUpper() : resultAll[i].Name.Substring(0, 2).ToUpper() + " ";
                 string category = resultAll[i].Category.Length > 3 ? resultAll[i].Category.Substring(0, 4).ToUpper() : resultAll[i].Category.Substring(0, 4).ToUpper();
                 decimal price = resultAll[i].Price;
                 string  idnamecategory = id + name + category;
-                string productbasedto = idnamecategory + price;
 
-                var a = new ProductBaseDTO()
+                var productBaseDTO = new ProductBaseDTO()
                 {
                     IdNameCategory = idnamecategory,
                     Price = price,
                 };
-                list.Add(a);
+                list.Add(productBaseDTO);
             }
-
             return list;
         }
     }
