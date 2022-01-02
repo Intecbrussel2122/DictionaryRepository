@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ListRepository.Models
 {
-    public class SortByPrice :Comparer<ProductBase>
+    public class SortByPrice :IComparer<ProductBase>
     {
-        public object Price { get; private set; }
+        public decimal Price { get;}
 
-        public override int Compare(ProductBase x, ProductBase y)
+        public int Compare(ProductBase x, ProductBase y)
         {
             return (x.Price).CompareTo(y.Price);
         }
