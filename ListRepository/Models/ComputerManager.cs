@@ -107,10 +107,37 @@ namespace ListRepository.Models
             return list;
         }
 
-        public List<ProductBase> GetPartOfProductDTO()
+        public List<ProductBaseDTO> GetPartOfProductDTO()
         {
-            var resultAll = SelectAll();
-            return resultAll;
+            var resultAll = Data.ProductList;
+
+            var list = new List<ProductBaseDTO>();
+
+            for (int i = 0; i < resultAll.Count; i++)
+            {
+                // int x = 10;
+                // int y = 5;
+
+                //var result = x > y ? "x is greater than y" : "x is less than y";
+                
+                var id = resultAll[i].Id.ToString();
+
+                // use ternary operator
+                string name = resultAll[i].Name.Length > 2 ? resultAll[i].Name.Substring(0, 3).ToUpper() : resultAll[i].Name.Substring(0, 2).ToUpper()+" ";
+                string category = resultAll[i].Category.Length > 3 ? resultAll[i].Category.Substring(0, 4).ToUpper() : resultAll[i].Category.Substring(0, 4).ToUpper();
+                decimal price = resultAll[i].Price;
+                string  idnamecategory = id + name + category;
+                string productbasedto = idnamecategory + price;
+
+                var a = new ProductBaseDTO()
+                {
+                    IdNameCategory = idnamecategory,
+                    Price = price,
+                };
+                list.Add(a);
+            }
+
+            return list;
         }
     }
 }

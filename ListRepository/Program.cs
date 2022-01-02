@@ -107,18 +107,22 @@ namespace ListRepository
                 Console.WriteLine(item);
             }
 
+            //Console.WriteLine(parts.Max(a => a.Price)); // here I do not have access to price to make any calculation
+            //Console.WriteLine(parts.Sum(a => a.Price));
+
             Console.WriteLine();
             Console.WriteLine();
+            //*************************************************************
            
             var partsDTO = cm.GetPartOfProductDTO();
             Console.WriteLine("From DTO collection");
 
             foreach (var item in partsDTO)
             {
-                Console.WriteLine(item.Id + item.Name.Substring(0,2).ToUpper() + item.Category.Substring(0,3).ToUpper() + "\t\t" + item.Price);
+                Console.WriteLine(item.IdNameCategory + "\t\t " + item.Price);
             }
-            Console.WriteLine(partsDTO.Max(a => a.Price)); 
-            Console.WriteLine(partsDTO.Sum(a => a.Price)); 
+            //Console.WriteLine(partsDTO.Max(a => a.Price)); // here I DO HAVE access to price to make any calculation
+            //Console.WriteLine(partsDTO.Sum(a => a.Price)); 
             Console.ReadLine();
         } 
 
