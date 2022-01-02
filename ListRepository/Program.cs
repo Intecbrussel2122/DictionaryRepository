@@ -107,7 +107,7 @@ namespace ListRepository
                 Console.WriteLine(item);
             }
 
-            //Console.WriteLine(parts.Max(a => a.Price)); // here I do not have access to price to make any calculation
+            //Console.WriteLine(parts.Max(a => a.Price)); // here I do NOT HAVE access to price to make any calculation
             //Console.WriteLine(parts.Sum(a => a.Price));
 
             Console.WriteLine();
