@@ -120,12 +120,13 @@ namespace ListRepository.Models
                 // int y = 5;
                 //var result = x > y ? "x is greater than y" : "x is less than y";
 
-                // use ternary operator
+               // use ternary operator
                 var id = resultAll[i].Id.ToString();
                 string name = resultAll[i].Name.Length > 2 ? resultAll[i].Name.Substring(0, 3).ToUpper() : resultAll[i].Name.Substring(0, 2).ToUpper() + " ";
                 string category = resultAll[i].Category.Length > 3 ? resultAll[i].Category.Substring(0, 4).ToUpper() : resultAll[i].Category.Substring(0, 4).ToUpper();
                 decimal price = resultAll[i].Price;
-                string  idnamecategory = id + name + category;
+                string idnamecategory = id + name + category;
+
 
                 var productBaseDTO = new ProductBaseDTO()
                 {
@@ -136,5 +137,8 @@ namespace ListRepository.Models
             }
             return list;
         }
+
+       
+
     }
 }

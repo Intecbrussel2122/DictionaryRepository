@@ -56,6 +56,7 @@ namespace ListRepository.Models
         // always implement 
         public override int GetHashCode()
         {
+            //altGR + 6 = ^
             //return Id.GetHashCode() ^ Name.GetHashCode(); //Bitwise XOR operator return 0 if the operands are equal and 1 if the aoperands are different
             return GetIdAndName.GetHashCode();// this is another way to test through property GetIdAndName
         }
@@ -64,6 +65,13 @@ namespace ListRepository.Models
         {
             // Alphabetic sort 
             return this.Name.CompareTo(other.Name);
+        }
+
+        public string GetCode()
+        {
+            // inserted PadRight(3) to avoid crashes if Category or Name are shorter than 3 characters
+           // return (Id + Name.PadRight(3).Substring(0, 3).ToUpper() + Category.PadRight(3).Substring(0,4).Replace(" ", "_").ToUpper());
+            return (Id + Name.PadRight(3).Substring(0, 3).Replace(" ","_").ToUpper() + Category.PadRight(3).Substring(0,4).Replace(" ", "_").ToUpper());
         }
     }
 }

@@ -149,6 +149,23 @@ namespace ListRepository
             
             
             Show(sort, "Sort by price");
+            Console.WriteLine();
+            Console.WriteLine();
+
+
+            Console.WriteLine("Use GetCode method");
+            foreach (var item in sort)
+            {
+                if (item.Id.ToString().Length > 1)
+                {
+                    Console.WriteLine(item.GetCode() + item.Price.ToString().PadLeft(22));
+
+                }
+                else 
+                {
+                    Console.WriteLine(item.GetCode() + item.Price.ToString().PadLeft(23));
+                }
+            }
 
             Console.ReadLine();
 
