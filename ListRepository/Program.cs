@@ -19,15 +19,23 @@ namespace ListRepository
             Console.WriteLine();
 
 
+            //Create new product and insert it in the collection
             ProductBase p0 = new ProductBase(12, "IBM", 900.00m, "Laptop");
             cm.Insert(p0);
 
-            Show(resultAll, "Show after add");
-            Console.WriteLine();
-            Console.WriteLine();
+            if (resultAll == null) // check for lazy loading, if resultAll is null initialise it here 
+            {
+                 resultAll = cm.SelectAll();
+            }
+            else
+            {
+                Show(resultAll, "Show after add"); //  otherwise use resultAll here
+                Console.WriteLine();
+                Console.WriteLine();
+            }
 
 
-            //Find
+            //Find an product
             var found = cm.Find(3);
             Console.WriteLine("Find an product");
             if (found)
@@ -48,6 +56,7 @@ namespace ListRepository
             Console.WriteLine();
             Console.WriteLine();
 
+
             //Select single
             Console.WriteLine("single record selected");
             var single = cm.SelectSingle(2);
@@ -55,12 +64,14 @@ namespace ListRepository
             Console.WriteLine(single.Category);
             Console.WriteLine(single.Price);
 
+
             //removeAt
             cm.Delete(1);
             Console.WriteLine();
             Show(resultAll, "Show after deletion");
             Console.WriteLine();
             Console.WriteLine();
+
 
             //Add if not same ID and Name 
             //***********************************************************************
@@ -138,7 +149,7 @@ namespace ListRepository
             Console.WriteLine();
 
             // sort by price
-            if (sort == null) // check for lazy loading
+            if (sort == null)
             {
                 sort = cm.SelectAll();
             }
@@ -166,9 +177,7 @@ namespace ListRepository
                     Console.WriteLine(item.GetCode() + item.Price.ToString().PadLeft(23));
                 }
             }
-
             Console.ReadLine();
-
         } 
 
      
