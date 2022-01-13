@@ -9,11 +9,11 @@ namespace ListRepository.Interfaces
 {
     public interface IRepository
     {
-        List<ProductBase> SelectAll();
-        void Insert(ProductBase product);
-        void Update(ProductBase product);
+        List<Computer> SelectAll();
+        void Insert(Computer product);
+        void Update(Computer product);
         void Delete(int id);
-        ProductBase SelectSingle(int id);
+        Computer SelectSingle(int id);
         bool Find(int find);
     }
 }

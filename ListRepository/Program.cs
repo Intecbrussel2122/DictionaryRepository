@@ -14,13 +14,19 @@ namespace ListRepository
             //Get All
             ComputerManager cm = new ComputerManager();
             var resultAll = cm.SelectAll();
+
+            //List<ProductBase> resultAll = cm.SelectAll();
+            //IEnumerable<ProductBase> resultAll = cm.SelectAll();
+            //IList<ProductBase> resultAll = cm.SelectAll();
+            //ICollection<ProductBase> resultAll = cm.SelectAll();
+
             Show(resultAll, "Show all");
             Console.WriteLine();
             Console.WriteLine();
 
 
             //Create new product and insert it in the collection
-            ProductBase p0 = new ProductBase(12, "IBM", 900.00m, "Laptop");
+            Computer p0 = new Computer(12, "IBM", 900.00m, "Laptop");
             cm.Insert(p0);
 
             if (resultAll == null) // check for lazy loading, if resultAll is null initialise it here 
@@ -81,7 +87,7 @@ namespace ListRepository
                                                                                 // but if we change p2.Price to 401.00 it will be added to the collection
 
 
-            ProductBase p2 = new ProductBase(1, "ThinkPad", 800.00m, "Laptop");
+            Computer p2 = new Computer(1, "ThinkPad", 800.00m, "Laptop");
 
             Console.WriteLine("Test with == ");
             Console.WriteLine(p1 == p2); // this will allways give false because reference is different 
@@ -111,6 +117,7 @@ namespace ListRepository
 
             Console.WriteLine();
             Console.WriteLine();
+
             var parts = cm.GetPartOfProductAsString(3);
 
             Console.WriteLine("From string collection");
@@ -181,7 +188,7 @@ namespace ListRepository
         } 
 
      
-        private static void Show(List<ProductBase> resultAll, string argument)
+        private static void Show(IEnumerable<ProductBase> resultAll, string argument)
         {
             Console.WriteLine(argument);
             Console.WriteLine(new string('-',50));

@@ -9,10 +9,10 @@ namespace ListRepository.Database
 {
     public class Data
     {
-        public static List<ProductBase> ProductList { get; set; }
+        public static List<Computer> ProductList { get; set; }
         static Data()
         {
-            ProductList = new List<ProductBase>();
+            ProductList = new List<Computer>();
             Computer p1 = new Computer(1, "Asus", 800.00m, "Laptop");
             Computer p2 = new Computer(2, "ThinkPad", 850.00m, "Laptop");
             Computer p3 = new Computer(3, "HP", 500.00m, "Desktop");

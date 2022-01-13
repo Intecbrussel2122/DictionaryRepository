@@ -11,9 +11,9 @@ namespace ListRepository.Models
             Data.ProductList.RemoveAt(id);
         }
 
-        public ProductBase SelectSingle(int id)
+        public Computer SelectSingle(int id)
         {
-            ProductBase product = Data.ProductList[id];
+            Computer product = Data.ProductList[id];
             return product;
         }
         public bool Find(int index)
@@ -29,23 +29,23 @@ namespace ListRepository.Models
             }
         }
 
-        public void Insert(ProductBase product)
+        public void Insert(Computer product)
         {
             Data.ProductList.Add(product);
         }
 
-        public List<ProductBase> SelectAll()
+        public List<Computer> SelectAll()
         {
             return Data.ProductList;
         }
-        public void Update(ProductBase product)
+        public void Update(Computer product)
         {
             ProductBase updateProduct = Data.ProductList[product.Id];
             updateProduct.Name = product.Name;
             updateProduct.Price = product.Price;
             updateProduct.Category = product.Category;
         }
-        public List<ProductBase> GetAllByCategory(string category)
+        public List<Computer> GetAllByCategory(string category)
         {
             // using simple foreach
 
@@ -63,6 +63,10 @@ namespace ListRepository.Models
 
             //using lambda expression
             var result = SelectAll();
+
+            //or
+            //var result = SelectAll().FindAll(p => p.Category == category);
+            //return result;
             return result.FindAll(p =>p.Category == category);
         }
 
