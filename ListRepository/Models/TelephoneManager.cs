@@ -8,7 +8,7 @@ namespace ListRepository.Models
 {
     public class TelephoneManager : IRepository
     {
-
+        //list done right
         public void Delete(int id)
         {
             Data.ProductList.RemoveAt(id);
