@@ -60,7 +60,6 @@ namespace ListRepository
             var category = cm.GetAllByCategory("Desktop");
             Show(category, "Show by category");
             Console.WriteLine();
-            Console.WriteLine();
 
 
             //Select single
@@ -83,7 +82,7 @@ namespace ListRepository
             //***********************************************************************
             // create two object of Product to test Equals and hashcode 
 
-            ProductBase p1 = new ProductBase(1, "ThinkPad", 800.00m, "Laptop"); // this product already exists in the collection and we get msg product exist in the collection
+            Computer   p1 = new Computer(1, "ThinkPad", 800.00m, "Laptop"); // this product already exists in the collection and we get msg product exist in the collection
                                                                                 // but if we change p2.Price to 401.00 it will be added to the collection
 
 
@@ -188,7 +187,7 @@ namespace ListRepository
         } 
 
      
-        private static void Show(IEnumerable<ProductBase> resultAll, string argument)
+        private static void Show(IEnumerable<Computer> resultAll, string argument)
         {
             Console.WriteLine(argument);
             Console.WriteLine(new string('-',50));
