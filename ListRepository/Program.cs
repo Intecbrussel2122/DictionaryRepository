@@ -26,7 +26,7 @@ namespace ListRepository
 
 
             //Create new product and insert it in the collection
-            Computer p0 = new Computer(12, "IBM", 900.00m, "Laptop");
+            Computer p0 = new Computer(12, "IBM", 900.00m, "Laptop", "Package");
             cm.Insert(p0);
 
             if (resultAll == null) // check for lazy loading, if resultAll is null initialise it here 
@@ -104,7 +104,7 @@ namespace ListRepository
             }
             else
             {
-                ProductBase p = new ProductBase(10, "ThinkPad", 800.00m, "Laptop");
+                Computer p = new Computer(10, "ThinkPad", 800.00m, "Laptop");
                 cm.Insert(p2);
                 Show(resultAll, "Added with Equals method");
                 Console.WriteLine();
