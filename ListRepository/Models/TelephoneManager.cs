@@ -1,10 +1,8 @@
 ﻿using ListRepository.Database;
 using ListRepository.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ListRepository.Models
 {
@@ -46,19 +44,24 @@ namespace ListRepository.Models
 
         public void ShowTelephones()
         {
-            //foreach (var item in SelectAll().OfType<Telephone>())
-            //{
-            //    Console.WriteLine(item);
-            //}
+            Console.WriteLine("List of telephones in the stock");
+            Console.WriteLine();
 
-            foreach (var item in SelectAll())
+            // first shorter way searching specified class type
+            foreach (var item in SelectAll().OfType<Telephone>())
             {
-                if (item is Telephone)
-                {
-                    Console.WriteLine(item);
-                }
+                Console.WriteLine(item);
             }
-            Console.WriteLine($"\n\n");
+
+            // second longer way searching specified class type
+            //foreach (var item in SelectAll())
+            //{
+            //    if (item is Telephone)
+            //    {
+            //        Console.WriteLine(item);
+            //    }
+            //}
+            //Console.WriteLine($"\n\n");
         }
 
         public void Update(ProductBase product)
