@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ListRepository.Models
 {
-    public class TelephoneManager:IRepository
+    public class TelephoneManager : IRepository
     {
-       
+
         public void Delete(int id)
         {
             Data.ProductList.RemoveAt(id);
@@ -47,15 +47,17 @@ namespace ListRepository.Models
         public void ShowTelephones()
         {
             //foreach (var item in SelectAll().OfType<Telephone>())
-            foreach (var item in SelectAll().OfType<Telephone>())
-                {
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            foreach (var item in SelectAll())
+            {
                 if (item is Telephone)
                 {
                     Console.WriteLine(item);
                 }
-               
             }
-
             Console.WriteLine($"\n\n");
         }
 
