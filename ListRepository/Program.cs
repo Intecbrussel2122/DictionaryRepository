@@ -183,11 +183,32 @@ namespace ListRepository
                     Console.WriteLine(item.GetCode() + item.Price.ToString().PadLeft(23));
                 }
             }
+
+            Telephone t0 = new Telephone(15, "Nokia", 30.00m, "Pocket", "piece");
+            cm.Insert(t0);
+
+            if (resultAll == null) // check for lazy loading, if resultAll is null initialise it here 
+            {
+                resultAll = cm.SelectAll();
+            }
+            else
+            {
+                Show(resultAll, "Show after add"); //  otherwise use resultAll here
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+
+            //***********************************************************************************************************************
+
+            TelephoneManager tm = new TelephoneManager();
+            tm.ShowTelephones();
+          
+
+
             Console.ReadLine();
         } 
-
      
-        private static void Show(IEnumerable<Computer> resultAll, string argument)
+        private static void Show(IEnumerable<ProductBase> resultAll, string argument)
         {
             Console.WriteLine(argument);
             Console.WriteLine(new string('-',50));
